@@ -77,29 +77,29 @@ func (c *TbkClient) ContentGet(request services.TaoBaoRequest) (response *Conten
 
 type TbkContentGetResponse struct {
 	Result struct {
-		Data struct{
-			Count int64 `json:"count"`
-			Contents struct{
-				MapData []struct{
-					Summary string `json:"summary"`
-					Score int64 `json:"score"`
-					Tags string `json:"tags"`
-					Title string `json:"title"`
-					AuthorId string `json:"author_id"`
-					AuthorNick string `json:"author_nick"`
+		Data struct {
+			Count    int64 `json:"count"`
+			Contents struct {
+				MapData []struct {
+					Summary      string `json:"summary"`
+					Score        int64  `json:"score"`
+					Tags         string `json:"tags"`
+					Title        string `json:"title"`
+					AuthorId     string `json:"author_id"`
+					AuthorNick   string `json:"author_nick"`
 					AuthorAvatar string `json:"author_avatar"`
-					Clink string `json:"clink"`
-					Type string `json:"type"`
-					UiStyle string `json:"ui_style"`
-					Images struct{
+					Clink        string `json:"clink"`
+					Type         string `json:"type"`
+					UiStyle      string `json:"ui_style"`
+					Images       struct {
 						String []string `json:"string"`
 					} `json:"images"`
-					ContentCategories string `json:"content_categories"`
-					PublishTime string `json:"publish_time"`
-					ContentId int64 `json:"content_id"`
-					PromotionTag string `json:"promotion_tag"`
-					ItemIds []int64 `json:"item_ids"`
-					UpdateTime string `json:"update_time"`
+					ContentCategories string  `json:"content_categories"`
+					PublishTime       string  `json:"publish_time"`
+					ContentId         int64   `json:"content_id"`
+					PromotionTag      string  `json:"promotion_tag"`
+					ItemIds           []int64 `json:"item_ids"`
+					UpdateTime        string  `json:"update_time"`
 				} `json:"map_data"`
 			} `json:"content"`
 			LastTimestamp string `json:"last_timestamp"`
@@ -110,4 +110,3 @@ type TbkContentGetResponse struct {
 func NewContentGetRequest() *ContentGetRequest {
 	return &ContentGetRequest{&services.BaseRequest{}}
 }
-

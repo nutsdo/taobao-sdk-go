@@ -1,16 +1,14 @@
 package tbk_test
 
 import (
-"fmt"
-"testing"
+	"fmt"
+	"testing"
 
-"github.com/nutsdo/taobao-sdk-go/auth"
-"github.com/nutsdo/taobao-sdk-go/services/tbk"
+	"github.com/nutsdo/taobao-sdk-go/services/tbk"
 )
 
 func TestScActivityInfoGet(t *testing.T) {
 
-	credential := &auth.Credentials{AppKey: "", AppSecret: []byte("")}
 	c := tbk.NewClientWith(credential)
 	c.SetSession("62004008ZZf5b07ee0629a07373342cd533036fd2f5b44c1866605434")
 	req := tbk.NewScActivityInfoGetRequest()
@@ -20,7 +18,7 @@ func TestScActivityInfoGet(t *testing.T) {
 	req.SetRelationId("520045220")
 
 	fmt.Printf("values: %#v\n", req.GetValues())
-	resp,err := c.ScActivityInfoGet(req)
+	resp, err := c.ScActivityInfoGet(req)
 	if err != nil {
 		fmt.Printf("错误响应:%v", err)
 

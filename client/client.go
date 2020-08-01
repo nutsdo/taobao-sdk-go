@@ -26,8 +26,8 @@ func TurnOnDebug() {
 	DebugMode = true
 }
 
-func newRequest(ctx context.Context, method, reqUrl string, headers http.Header, body io.Reader) (req *http.Request,err error) {
-	req,err = http.NewRequest(method, reqUrl, body)
+func newRequest(ctx context.Context, method, reqUrl string, headers http.Header, body io.Reader) (req *http.Request, err error) {
+	req, err = http.NewRequest(method, reqUrl, body)
 	if err != nil {
 		return
 	}
@@ -45,7 +45,7 @@ func newRequest(ctx context.Context, method, reqUrl string, headers http.Header,
 
 func (r Client) DoRequest(ctx context.Context, method, reqUrl string, headers http.Header) (resp *http.Response, err error) {
 	req, err := newRequest(ctx, method, reqUrl, headers, nil)
-	if err !=nil {
+	if err != nil {
 		return
 	}
 	return r.Do(ctx, req)
@@ -55,7 +55,7 @@ func (r Client) DoRequestWith(ctx context.Context, method, reqUrl string, header
 	bodyLength int) (resp *http.Response, err error) {
 
 	req, err := newRequest(ctx, method, reqUrl, headers, body)
-	if err != nil{
+	if err != nil {
 		return
 	}
 	req.ContentLength = int64(bodyLength)
@@ -66,7 +66,7 @@ func (r Client) DoRequestWith64(ctx context.Context, method, reqUrl string, head
 	bodyLength int64) (resp *http.Response, err error) {
 
 	req, err := newRequest(ctx, method, reqUrl, headers, body)
-	if err != nil{
+	if err != nil {
 		return
 	}
 	req.ContentLength = bodyLength
@@ -82,14 +82,14 @@ func (r Client) DoRequestWithForm(ctx context.Context, method, reqUrl string, he
 	headers.Add("Content-Type", "application/x-www-form-urlencoded")
 	requestData := url.Values(data).Encode()
 
-	if method == "GET" || method == "POST" || method == "DELETE"{
-		if strings.ContainsRune(reqUrl,'?') {
+	if method == "GET" || method == "POST" || method == "DELETE" {
+		if strings.ContainsRune(reqUrl, '?') {
 			reqUrl += "&"
 		} else {
 			reqUrl += "?"
 		}
 
-		return r.DoRequest(ctx, method, reqUrl + requestData, headers)
+		return r.DoRequest(ctx, method, reqUrl+requestData, headers)
 
 	}
 
@@ -129,12 +129,12 @@ func (r Client) Do(ctx context.Context, req *http.Request) (resp *http.Response,
 	}
 
 	select {
-	case <- ctx.Done():
+	case <-ctx.Done():
 		err = ctx.Err()
 		return
 	default:
 	}
 
 	resp, err = r.Client.Do(req)
-	return 
+	return
 }

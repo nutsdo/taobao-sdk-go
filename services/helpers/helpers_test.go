@@ -10,7 +10,7 @@ import (
 func TestIdentifyTpwd(t *testing.T) {
 
 	tkl, err := helpers.IdentifyTpwd("$KEX21cd6xqg₴")
-	if err !=nil {
+	if err != nil {
 		fmt.Println(err)
 		return
 	}

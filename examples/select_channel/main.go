@@ -9,12 +9,12 @@ func main() {
 	reqC := make(chan bool, 1)
 	reqB := make(chan bool, 1)
 	go func() {
-		time.Sleep(time.Second*10)
+		time.Sleep(time.Second * 10)
 		reqC <- true
 	}()
 
 	go func() {
-		time.Sleep(time.Second*15)
+		time.Sleep(time.Second * 15)
 		reqB <- true
 	}()
 	fmt.Println("等待接受数据...")

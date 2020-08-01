@@ -17,22 +17,22 @@ func (r *ItemRecommendRequest) Method() string {
 
 func (r *ItemRecommendRequest) SetFields(fields string) *ItemRecommendRequest {
 	r.SetValue("fields", fields)
-	return  r
+	return r
 }
 
 func (r *ItemRecommendRequest) SetNumIid(num_iid string) *ItemRecommendRequest {
 	r.SetValue("num_iid", num_iid)
-	return  r
+	return r
 }
 
 func (r *ItemRecommendRequest) SetCount(count string) *ItemRecommendRequest {
 	r.SetValue("count", count)
-	return  r
+	return r
 }
 
 func (r *ItemRecommendRequest) SetPlatform(platform string) *ItemRecommendRequest {
 	r.SetValue("platform", platform)
-	return  r
+	return r
 }
 
 func (c *TbkClient) ItemRecommendGet(request services.TaoBaoRequest) (response *ItemRecommendGetResponse, err error) {
@@ -51,7 +51,7 @@ func (c *TbkClient) ItemRecommendGet(request services.TaoBaoRequest) (response *
 
 	response = NewItemRecommendGetResponse()
 
-	err = services.Byte2Response(data,response)
+	err = services.Byte2Response(data, response)
 	if err != nil {
 		return nil, err
 	}
@@ -72,18 +72,18 @@ type TbkItemRecommendGetResults struct {
 }
 
 type TbkItemRecommendGetNTbkItem struct {
-	NumIid int64 `json:"num_iid"`
-	Title string `json:"title"`
-	PictUrl string `json:"pict_url"`
-	SmallImages []string `json:"small_images"`
-	ReservePrice string `json:"reserve_price"`
-	ZkFinalPrice string `json:"zk_final_price"`
-	UserType int64 `json:"user_type"`
-	Provcity string `json:"provcity"`
-	ItemUrl string `json:"item_url"`
-	Nick string `json:"nick"`
-	SellerId int64 `json:"seller_id"`
-	Volume int64 `json:"volume"`
+	NumIid       int64    `json:"num_iid"`
+	Title        string   `json:"title"`
+	PictUrl      string   `json:"pict_url"`
+	SmallImages  []string `json:"small_images"`
+	ReservePrice string   `json:"reserve_price"`
+	ZkFinalPrice string   `json:"zk_final_price"`
+	UserType     int64    `json:"user_type"`
+	Provcity     string   `json:"provcity"`
+	ItemUrl      string   `json:"item_url"`
+	Nick         string   `json:"nick"`
+	SellerId     int64    `json:"seller_id"`
+	Volume       int64    `json:"volume"`
 }
 
 func NewItemRecommendRequest() *ItemRecommendRequest {
@@ -93,4 +93,3 @@ func NewItemRecommendRequest() *ItemRecommendRequest {
 func NewItemRecommendGetResponse() *ItemRecommendGetResponse {
 	return &ItemRecommendGetResponse{}
 }
-

@@ -55,19 +55,18 @@ func (c *TbkClient) CouponGet(request services.TaoBaoRequest) (response *CouponG
 
 type TbkCouponGetResponse struct {
 	Data struct {
-		CouponStartFee string `json:"coupon_start_fee"`
-		CouponSemainCount int64 `json:"coupon_semain_count"`
-		CouponTotalCount int64 `json:"coupon_total_count"`
-		CouponEndTime string `json:"coupon_end_time"`
-		CouponStartTime string `json:"coupon_start_time"`
-		CouponAmount string `json:"coupon_amount"`
-		CouponSrcScene int64 `json:"coupon_src_scene"`
-		CouponType int64 `json:"coupon_type"`
-		CouponActivityId string `json:"coupon_activity_id"`
+		CouponStartFee    string `json:"coupon_start_fee"`
+		CouponSemainCount int64  `json:"coupon_semain_count"`
+		CouponTotalCount  int64  `json:"coupon_total_count"`
+		CouponEndTime     string `json:"coupon_end_time"`
+		CouponStartTime   string `json:"coupon_start_time"`
+		CouponAmount      string `json:"coupon_amount"`
+		CouponSrcScene    int64  `json:"coupon_src_scene"`
+		CouponType        int64  `json:"coupon_type"`
+		CouponActivityId  string `json:"coupon_activity_id"`
 	} `json:"data"`
 }
 
 func NewCouponGetRequest() *CouponGetRequest {
 	return &CouponGetRequest{&services.BaseRequest{}}
 }
-

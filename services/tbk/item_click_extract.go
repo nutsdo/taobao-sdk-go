@@ -46,12 +46,10 @@ func (c *TbkClient) ItemClickExtract(request services.TaoBaoRequest) (response *
 }
 
 type TbkItemClickExtractResponse struct {
-	ItemId string `json:"item_id"`
+	ItemId  string `json:"item_id"`
 	OpenIid string `json:"open_iid"`
 }
 
 func NewItemClickExtractRequest() *ItemClickExtractRequest {
 	return &ItemClickExtractRequest{&services.BaseRequest{}}
 }
-
-

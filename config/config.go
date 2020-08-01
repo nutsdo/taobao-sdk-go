@@ -12,11 +12,11 @@ type Config struct {
 	TargetAppKey string
 	SignMethod   string
 	//Session      string
-	Timestamp    string
-	Format       string
-	V            string
-	PartnerId    string
-	Simplify     string
+	Timestamp string
+	Format    string
+	V         string
+	PartnerId string
+	Simplify  string
 }
 
 var DefaultConfig = Config{
@@ -32,9 +32,9 @@ func NewConfigWithCredential(credential *auth.Credentials, session string) *Conf
 		AppKey:     credential.AppKey,
 		SignMethod: "md5",
 		//Session:    session,
-		Timestamp:  time.Now().Format("2006-01-02 15:04:05"),
-		Format:     "json",
-		V:          "2.0",
+		Timestamp: time.Now().Format("2006-01-02 15:04:05"),
+		Format:    "json",
+		V:         "2.0",
 	}
 	fmt.Printf("输出配置:%#v", config)
 	return config

@@ -1,11 +1,11 @@
 package tbk_test
 
 import (
-"fmt"
-"testing"
+	"fmt"
+	"testing"
 
-"github.com/nutsdo/taobao-sdk-go/auth"
-"github.com/nutsdo/taobao-sdk-go/services/tbk"
+	"github.com/nutsdo/taobao-sdk-go/auth"
+	"github.com/nutsdo/taobao-sdk-go/services/tbk"
 )
 
 func TestActivityLinkGet(t *testing.T) {
@@ -18,7 +18,7 @@ func TestActivityLinkGet(t *testing.T) {
 	req.SetRelationId("520045220")
 
 	fmt.Printf("values: %#v\n", req.GetValues())
-	resp,err := c.ActivityLinkGet(req)
+	resp, err := c.ActivityLinkGet(req)
 	if err != nil {
 		fmt.Printf("错误响应:%v", err)
 

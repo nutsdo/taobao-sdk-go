@@ -6,10 +6,10 @@ import (
 	"testing"
 )
 
-func TestConfig(t *testing.T)  {
+func TestConfig(t *testing.T) {
 	credential := &auth.Credentials{
-		AppKey:"12312312",
-		AppSecret:[]byte("123123adasds3"),
+		AppKey:    "12312312",
+		AppSecret: []byte("123123adasds3"),
 	}
 	session := "1123213123"
 	cfg := config.NewConfigWithCredential(credential, session)

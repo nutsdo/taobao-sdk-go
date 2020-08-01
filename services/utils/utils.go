@@ -75,7 +75,7 @@ func (c *OAuthClient) AccessToken(request services.TaoBaoRequest) (response *Acc
 
 	response = NewAccessTokenResponse()
 
-	err = services.Byte2Response(data,response)
+	err = services.Byte2Response(data, response)
 
 	return response, nil
 }

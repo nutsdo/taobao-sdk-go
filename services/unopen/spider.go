@@ -13,31 +13,30 @@ import (
 )
 
 type TaoPwd struct {
-	Api string `json:"api"`
+	Api  string    `json:"api"`
 	Data PwdDetail `json:"data"`
-	Ret []string `json:"ret"`
-	V string `json:"v"`
+	Ret  []string  `json:"ret"`
+	V    string    `json:"v"`
 }
 
 type PwdDetail struct {
-	CreateAppkey string `json:"createAppkey"`
-	ValidDate string `json:"validDate"`
-	TaopwdOwnerId string `json:"taopwdOwnerId"`
-	Title string `json:"title"`
-	TemplateId string `json:"templateId"`
-	MyTaopwdToast string `json:"myTaopwdToast"`
-	Content string `json:"content"`
-	Url string `json:"url"`
-	PicUrl string `json:"picUrl"`
-	RankPic string `json:"rankPic"`
-	Password string `json:"password"`
-	OwnerName string `json:"ownerName"`
-	Price string `json:"price"`
-	RankNum string `json:"rankNum"`
-	BizId string `json:"bizId"`
-	LeftButtonText string `json:"leftButtonText"`
+	CreateAppkey    string `json:"createAppkey"`
+	ValidDate       string `json:"validDate"`
+	TaopwdOwnerId   string `json:"taopwdOwnerId"`
+	Title           string `json:"title"`
+	TemplateId      string `json:"templateId"`
+	MyTaopwdToast   string `json:"myTaopwdToast"`
+	Content         string `json:"content"`
+	Url             string `json:"url"`
+	PicUrl          string `json:"picUrl"`
+	RankPic         string `json:"rankPic"`
+	Password        string `json:"password"`
+	OwnerName       string `json:"ownerName"`
+	Price           string `json:"price"`
+	RankNum         string `json:"rankNum"`
+	BizId           string `json:"bizId"`
+	LeftButtonText  string `json:"leftButtonText"`
 	RightButtonText string `json:"rightButtonText"`
-
 }
 
 //解析淘口令接口
@@ -48,7 +47,7 @@ func ParseTpwd(code string) (pwd *TaoPwd, err error) {
 	}
 	//替换为标准的淘口令
 	//TODO
-	codeSlice := code[1:len(code)-1]
+	codeSlice := code[1 : len(code)-1]
 	var codeBuf strings.Builder
 	codeBuf.WriteString("￥")
 	codeBuf.WriteString(codeSlice)
@@ -151,4 +150,3 @@ func queryBuilder(params map[string]string) string {
 type PasswordData struct {
 	Password string `json:"password"`
 }
-

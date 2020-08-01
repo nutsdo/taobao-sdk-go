@@ -46,7 +46,7 @@ func (c *TbkClient) GetItemInfo(request services.TaoBaoRequest) (response *ItemI
 
 	response = &ItemInfoResponse{}
 
-	err = services.Byte2Response(data,response)
+	err = services.Byte2Response(data, response)
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +57,6 @@ func (c *TbkClient) GetItemInfo(request services.TaoBaoRequest) (response *ItemI
 func NewItemInfoRequest() *ItemInfoRequest {
 	return &ItemInfoRequest{&services.BaseRequest{}}
 }
-
 
 type TbkItemInfoGetResponse struct {
 	Results struct {

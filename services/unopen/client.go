@@ -4,8 +4,7 @@ import "net/http"
 
 func NewClient() *http.Client {
 	client := &http.Client{
-		Transport:nil,
-
+		Transport: nil,
 	}
 
 	return client

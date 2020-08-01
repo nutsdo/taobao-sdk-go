@@ -145,6 +145,37 @@ func (r *DgMaterialOptionalRequest) SetLockRateStartTime(lock_rate_start_time st
 	r.SetValue("lock_rate_start_time", lock_rate_start_time)
 }
 
+//2020-07-10更新
+//本地化业务入参-LBS信息-经度
+func (r *DgMaterialOptionalRequest) SetLongitude(longitude string) {
+	r.SetValue("longitude", longitude)
+}
+
+//本地化业务入参-LBS信息-纬度
+func (r *DgMaterialOptionalRequest) SetLatitude(latitude string) {
+	r.SetValue("latitude", latitude)
+}
+
+//本地化业务入参-LBS信息-国际城市码，仅支持单个请求
+func (r *DgMaterialOptionalRequest) SetCityCode(city_code string) {
+	r.SetValue("city_code", city_code)
+}
+
+//商家ID，饿了么专用
+func (r *DgMaterialOptionalRequest) SetSellerIds(seller_ids string) {
+	r.SetValue("seller_ids", seller_ids)
+}
+
+//会员运营ID
+func (r *DgMaterialOptionalRequest) SetSpecialId(special_id string) {
+	r.SetValue("special_id", special_id)
+}
+
+//淘宝客外部用户标记，如自身系统账户ID：微信ID等
+func (r *DgMaterialOptionalRequest) SetExternalId(external_id string) {
+	r.SetValue("external_id", external_id)
+}
+
 func (c *TbkClient) DgMaterialOptional(request services.TaoBaoRequest) (response *DgMaterialOptionalResponse, err error) {
 
 	resp, err := c.DoRequest(request)
@@ -171,6 +202,7 @@ func NewDgMaterialOptionalRequest() *DgMaterialOptionalRequest {
 	return &DgMaterialOptionalRequest{&services.BaseRequest{}}
 }
 
+//2020-07-10新增字段
 type TbkDgMaterialOptionalResponse struct {
 	TotalResults int64 `json:"total_results"`
 	ResultList   struct {
@@ -243,6 +275,12 @@ type TbkDgMaterialOptionalResponse struct {
 			YsylClickUrl           string `json:"ysyl_click_url"`
 			YsylTljUseEndTime      string `json:"ysyl_tlj_use_end_time"`
 			YsylTljUseStartTime    string `json:"ysyl_tlj_use_start_time"`
+			SaleBeginTime          string `json:"sale_begin_time"`        //2020-07-10新增
+			SaleEndTime            string `json:"sale_end_time"`          //2020-07-10新增
+			Distance               string `json:"distance"`               //2020-07-10新增
+			UsableShopId           string `json:"usable_shop_id"`         //2020-07-10新增
+			SalePrice              string `json:"sale_price"`             //2020-07-10新增
+			KuadianPromotionInfo   string `json:"kuadian_promotion_info"` //2020-07-10新增
 		} `json:"map_data"`
 	} `json:"result_list"`
 	RequestId string `json:"request_id"`

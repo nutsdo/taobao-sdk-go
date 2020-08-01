@@ -9,24 +9,23 @@ import (
 
 var (
 	WEB_HOST = "https://oauth.taobao.com/"
-	H5_HOST = "https://oauth.m.taobao.com/"
+	H5_HOST  = "https://oauth.m.taobao.com/"
 )
 
 func (c *Credentials) AuthorizeUrlBuilder(redirect, view string) string {
 	query := url.Values{}
 
 	query.Set("client_id", c.AppKey)
-	query.Set("response_type","code")
+	query.Set("response_type", "code")
 	query.Set("redirect_uri", redirect)
-	query.Set("state","123123")
-	query.Set("view","web")
-
+	query.Set("state", "123123")
+	query.Set("view", "web")
 
 	var str strings.Builder
-	if view =="web" {
+	if view == "web" {
 		str.WriteString(WEB_HOST)
 
-	}else if view == "wap"{
+	} else if view == "wap" {
 		str.WriteString(H5_HOST)
 	}
 
@@ -43,23 +42,22 @@ func (c *Credentials) Authorize(redirect, view string) {
 }
 
 //get code
-func (c *Credentials) AccessToken(code, redirect, view string) (data []byte,err error) {
+func (c *Credentials) AccessToken(code, redirect, view string) (data []byte, err error) {
 	query := url.Values{}
 
 	query.Set("client_id", c.AppKey)
 	query.Set("client_secret", string(c.AppSecret))
-	query.Set("grant_type","authorization_code")
-	query.Set("code",code)
-	query.Set("state","123123")
+	query.Set("grant_type", "authorization_code")
+	query.Set("code", code)
+	query.Set("state", "123123")
 	query.Set("redirect_uri", redirect)
-	query.Set("view","web")
-
+	query.Set("view", "web")
 
 	var str strings.Builder
-	if view =="web" {
+	if view == "web" {
 		str.WriteString(WEB_HOST)
 
-	}else if view == "wap"{
+	} else if view == "wap" {
 		str.WriteString(H5_HOST)
 	}
 	str.WriteString("token")
@@ -73,26 +71,26 @@ func (c *Credentials) AccessToken(code, redirect, view string) (data []byte,err 
 		return nil, err
 	}
 
-	bodyBytes,_:=ioutil.ReadAll(resp.Body)
+	bodyBytes, _ := ioutil.ReadAll(resp.Body)
 
 	return bodyBytes, nil
 }
 
-func (c *Credentials) RefreshToken(refreshToken, view string) (data []byte,err error) {
+func (c *Credentials) RefreshToken(refreshToken, view string) (data []byte, err error) {
 	query := url.Values{}
 
 	query.Set("client_id", c.AppKey)
 	query.Set("client_secret", string(c.AppSecret))
-	query.Set("grant_type","refresh_token")
+	query.Set("grant_type", "refresh_token")
 	query.Set("refresh_token", refreshToken)
-	query.Set("state","123123")
-	query.Set("view","web")
+	query.Set("state", "123123")
+	query.Set("view", "web")
 
 	var str strings.Builder
-	if view =="web" {
+	if view == "web" {
 		str.WriteString(WEB_HOST)
 
-	}else if view == "wap"{
+	} else if view == "wap" {
 		str.WriteString(H5_HOST)
 	}
 	str.WriteString("token")
@@ -106,7 +104,7 @@ func (c *Credentials) RefreshToken(refreshToken, view string) (data []byte,err e
 		return nil, err
 	}
 
-	bodyBytes,_:=ioutil.ReadAll(resp.Body)
+	bodyBytes, _ := ioutil.ReadAll(resp.Body)
 
 	return bodyBytes, nil
 }

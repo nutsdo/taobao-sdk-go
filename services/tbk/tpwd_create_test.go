@@ -9,16 +9,16 @@ import (
 )
 
 func TestTpwdCreate(t *testing.T) {
+	credential := &auth.Credentials{AppKey: "25254678", AppSecret: []byte("5e5e16ddb6c2d780f91401a9c990b7d6")}
 
-	credential := &auth.Credentials{AppKey: "", AppSecret: []byte("")}
 	c := tbk.NewClientWith(credential)
-
+	u := "https://mos.m.taobao.com/union/accurate-return?targetUrl=https%3A%2F%2Fuland.taobao.com%2Fcoupon%2Fedetail%3Fe%3DhoLFan7AtgcGQASttHIRqb0EIlytAlj%252FYqXW9vejEUYTqwA3YD77rCn0KRp0PQNXER5xndNmRk3V4pnBJPLz9zEhJpUUrcnYisiADW1vMjwKb5nDc53rb8Rlqw%252FTjW%252BQLspxGy3zBjaiuj3CzrHp9chouCqZLg4hT%252F1mTtwPHxQZwz%252BY5VeKWY369hICPECOe6L%252Bf9DtnlUCMISgOiKUD9tN7m9cS4TU%26traceId%3D0b105ada15944368879286166ee9b5%26union_lens%3DlensId%3ATAPI%401594436887%400b0fe08b_0e19_1733bd825b1_35fe%4001%26xId%3D1gHtXAPOz9mYKgom14UQKxN2kiPWC75vhpx6msj62Zxs1T3DMoU9qqgl55j92JjikU72ypIBz80iPUlvAyIbwZGiwtIYqitsahUkSZoWqjdg&tkId=54103422&externalId=gsid2412"
 	req := tbk.NewTpwdCreateRequest()
 	req.SetText("测试淘口令")
-	req.SetUrl("https://uland.taobao.com/coupon/edetail?e=JiCgVr1j%2BG0GQASttHIRqSOR6G7egnNLj1oVGjCLR5fyi1aSyqbpmkpzDMCNLbviAMZjpJtsBIJzfBR45d0O7eSFwsw9whwjDfqEFBOhTcwIEVMQF19gsGCneBWRsmklXV01yT5NCM%2FB0bVmWMCOxWCBLf0Ce8vJQdUCsKS61xH3LTDo28QWQkbYLu1k1GIxF6Y%2FSGkgg%2B%2BMOmm%2BVf6hvw2U0kG5qm9DYwOD23XOnRHymNXcL2pzBIcAHJUIj3zOuBTHTfgZwSk%3D&traceId=0b5218ed15833013628107033e241e&traffic_flag=lm&scm=20140618.1.01010001.s101c6&spm=a21wq.8595780.1000.3&src=tblm_lmapp&union_lens=lensId%3AAPP%401583300638%400b5952e0_0cd4_1709eff9f7b_79f9%40042erumVJGWQTKcxBi2iEZfb&un=e16318b025782788143b731291a8a715&share_crt_v=1&ut_sk=1.utdid_null_1583301363055.TaoPassword-Outside.lianmeng-app&sp_tk=77+leFhPbjFna0JOOTHvv6U=")
+	req.SetUrl(u)
 
 	fmt.Printf("values: %#v\n", req.GetValues())
-	resp,err := c.TpwdCreate(req)
+	resp, err := c.TpwdCreate(req)
 	if err != nil {
 		fmt.Printf("错误响应:%v", err)
 

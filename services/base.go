@@ -89,7 +89,7 @@ func (br *BaseResponse) IsSuccess() bool {
 func Byte2Response(data []byte, resp interface{}) error {
 
 	fmt.Println(string(data))
-	if strings.Contains(string(data),"error_response") {
+	if strings.Contains(string(data), "error_response") {
 
 		return errors.New(string(data))
 	}
@@ -125,7 +125,6 @@ func Unmarshal(response TaoBaoResponse, httpResponse *http.Response, format stri
 	}
 	return
 }
-
 
 func (br *BaseResponse) parseFromHttpResponse(httpResponse *http.Response) (err error) {
 	defer httpResponse.Body.Close()
@@ -164,10 +163,10 @@ type BaseErrorResponse struct {
 
 type BaseError struct {
 	BaseCode int64
-	BaseMsg string
+	BaseMsg  string
 }
 
-type ErrorResponse struct{
+type ErrorResponse struct {
 	SubMsg  string `json:"sub_msg"`
 	Code    int64  `json:"code"`
 	SubCode string `json:"sub_code"`
@@ -183,9 +182,9 @@ func MarshalErrorResponse(data []byte) *BaseErrorResponse {
 	if err := json.Unmarshal(data, &respMap); err == nil {
 
 		fmt.Println("转换map后:", respMap)
-		if _,ok := respMap["error_response"]; ok {
+		if _, ok := respMap["error_response"]; ok {
 
-			err :=json.Unmarshal(data, errresp)
+			err := json.Unmarshal(data, errresp)
 			if err != nil {
 				fmt.Println("解析错误:", err)
 			}

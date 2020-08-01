@@ -43,6 +43,17 @@ func (r *PrivilegeGetRequest) SetRelationId(relation_id string) {
 	r.SetValue("relation_id", relation_id)
 }
 
+//2020-07-10 新增入参
+//会员运营ID
+func (r *PrivilegeGetRequest) SetSpecialId(special_id string) {
+	r.SetValue("special_id", special_id)
+}
+
+//淘宝客外部用户标记，如自身系统账户ID：微信ID等
+func (r *PrivilegeGetRequest) SetExternalId(external_id string) {
+	r.SetValue("external_id", external_id)
+}
+
 func (c *TbkClient) PrivilegeGet(request services.TaoBaoRequest) (response *PrivilegeGetResponse, err error) {
 
 	resp, err := c.DoRequest(request)
@@ -55,10 +66,9 @@ func (c *TbkClient) PrivilegeGet(request services.TaoBaoRequest) (response *Priv
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println(string(data))
 	response = &PrivilegeGetResponse{}
 
-	if err := services.Byte2Response(data,response); err != nil {
+	if err := services.Byte2Response(data, response); err != nil {
 		return nil, err
 	}
 
@@ -95,6 +105,7 @@ type TbkPrivilegeGetResponse struct {
 			YsylCommissionRate  string `json:"ysyl_commission_rate"`
 			YsylTljUseStartTime string `json:"ysyl_tlj_use_start_time"`
 			YsylTljUseEndTime   string `json:"ysyl_tlj_use_end_time"`
+			MinCommissionRate   string `json:"min_commission_rate"`
 		} `json:"data"`
 	} `json:"result"`
 	RequestId string `json:"request_id"`

@@ -54,7 +54,7 @@ func (c *TbkClient) TpwdCreate(request services.TaoBaoRequest) (response *TpwdCr
 	fmt.Println(string(data))
 	response = &TpwdCreateResponse{}
 
-	if err := services.Byte2Response(data,response); err != nil {
+	if err := services.Byte2Response(data, response); err != nil {
 		return nil, err
 	}
 
@@ -62,7 +62,7 @@ func (c *TbkClient) TpwdCreate(request services.TaoBaoRequest) (response *TpwdCr
 }
 
 type TbkTpwdCreateResponse struct {
-	Data struct{
+	Data struct {
 		Model string `json:"model"`
 	} `json:"data"`
 }

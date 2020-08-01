@@ -9,7 +9,6 @@ import (
 	"github.com/nutsdo/taobao-sdk-go/services"
 )
 
-
 type ActivityInfoGetRequest struct {
 	*services.BaseRequest
 }
@@ -20,22 +19,22 @@ func (r *ActivityInfoGetRequest) Method() string {
 
 func (r *ActivityInfoGetRequest) SetActivityMaterialId(activity_material_id string) *ActivityInfoGetRequest {
 	r.SetValue("activity_material_id", activity_material_id)
-	return  r
+	return r
 }
 
 func (r *ActivityInfoGetRequest) SetAdzoneId(adzone_id string) *ActivityInfoGetRequest {
 	r.SetValue("adzone_id", adzone_id)
-	return  r
+	return r
 }
 
 func (r *ActivityInfoGetRequest) SetSubPid(sub_pid string) *ActivityInfoGetRequest {
 	r.SetValue("sub_pid", sub_pid)
-	return  r
+	return r
 }
 
 func (r *ActivityInfoGetRequest) SetRelationId(relation_id string) *ActivityInfoGetRequest {
 	r.SetValue("relation_id", relation_id)
-	return  r
+	return r
 }
 
 func (c *TbkClient) ActivityInfoGet(request services.TaoBaoRequest) (response *ActivityInfoGetResponse, err error) {
@@ -69,14 +68,14 @@ type ActivityInfoGetResponse struct {
 }
 
 type TbkActivityInfoGetResponse struct {
-	Data struct{
-		WxQrcodeUrl string `json:"wx_qrcode_url"`
-		ClickUrl string `json:"click_url"`
-		ShortClickUrl string `json:"short_click_url"`
-		TerminalType string `json:"terminal_type"`
+	Data struct {
+		WxQrcodeUrl    string `json:"wx_qrcode_url"`
+		ClickUrl       string `json:"click_url"`
+		ShortClickUrl  string `json:"short_click_url"`
+		TerminalType   string `json:"terminal_type"`
 		MaterialOssUrl string `json:"material_oss_url"`
-		PageName string `json:"page_name"`
-		PageStartTime string `json:"page_start_time"`
-		PageEndTime string `json:"page_end_time"`
+		PageName       string `json:"page_name"`
+		PageStartTime  string `json:"page_start_time"`
+		PageEndTime    string `json:"page_end_time"`
 	} `json:"data"`
 }
